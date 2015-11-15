@@ -1,8 +1,42 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
 }
 
-a {
-  color: #00B7FF;
+main {
+  flex: 1 0 auto;
+}
+
+.message-list{
+  overflow-y:scroll;
+  height:60vh;
+}
+
+.message-list li{
+  display:inline-block;
+}
+
+.message-list li.left{
+   margin-right:50px;
+   margin-left:5px;
+ }
+
+.message-list li.right{
+  margin-left:50px;
+  margin-right:5px;
+  text-align:right;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 0px;
+  background-color: rgba(1,1,1,0.2);
 }

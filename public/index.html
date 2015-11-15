@@ -1,15 +1,124 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Team Managing</title>
-    <link rel='stylesheet' href='/css/style.css' />
-</head>
-<body>
-<h1>Hello</h1>
-<p>Welcome to the team managing tool</p>
-<script src="/js/socket.io.js"></script>
-<script>
-    var socket = io.connect('http://localhost:3000');
-</script>
-</body>
+    <head>
+        <title>Team Managing App</title>
+        <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel='stylesheet' href='/css/materialize.min.css' />
+        <link rel='stylesheet' href='/css/style.css' />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <!--
+        <header>
+            <nav>
+                <div class="nav-wrapper">
+                    <a href="#" class="brand-logo">Team Managing App</a>
+                    <ul class="right hide-on-med-and-down">
+                        <li><a href="#"><i class="material-icons">more_vert</i></a></li>
+                    </ul>
+                </div>
+            </nav>
+        </header> -->
+
+        <main>
+            <div style="height:20px;"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col s12 l8 offset-l2 z-depth-1">
+                        <div class="col s12">
+                            <div class="center-align">
+                                <h2>Team #1</h2>
+                            </div>
+                        </div>
+                        <div class="col s12">
+                            <ul id="message-list" class="message-list">
+                                <li class="left">
+                                    <div class="card-panel teal">
+                                      <span class="white-text">
+                                          <b> Yourname: </b><br>
+                                          I am a very simple card. I am good at containing small bits of information.
+                                          I am convenient because I require little markup to use effectively. I am similar to what is called a panel in other frameworks.
+                                      </span>
+                                    </div>
+                                </li>
+                                <li class="left">
+                                    <div class="card-panel teal">
+                                      <span class="white-text">
+                                          <b> Yourname: </b><br>
+                                          I am a very simple card.
+                                      </span>
+                                    </div>
+                                </li>
+                                <li class="left">
+                                    <div class="card-panel teal">
+                                      <span class="white-text">
+                                          <b> Yourname: </b><br>
+                                          I am a very simple card. I am good at containing small bits of information.
+                                      </span>
+                                    </div>
+                                </li>
+                                <li class="left">
+                                    <div class="card-panel teal">
+                                      <span class="white-text">
+                                          <b> Yourname: </b><br>
+                                          I am a very simple card. I am good at containing small bits of information.
+                                          I am convenient because I require little markup to use effectively. I am similar to what is called a panel in other frameworks.
+                                      </span>
+                                    </div>
+                                </li>
+                                <li class="right">
+                                    <div class="card-panel cyan darken-3">
+                                      <span class="white-text">
+                                          I am a very simple card. I am good at containing small bits of information.
+                                          I am convenient because I require little markup to use effectively. I am similar to what is called a panel in other frameworks.
+                                      </span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="input-field col s11">
+                            <input type="text" id="message" class="left" placeholder="Write a message">
+                        </div>
+                        <div class="input-field col s1">
+                            <button class="btn-floating waves-effect waves-light right" type="submit" name="action">
+                                    <i class="material-icons">send</i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <!--
+        <footer class="page-footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col l6 s12">
+                        <h5 class="white-text">Footer Content</h5>
+                        <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+                    </div>
+                    <div class="col l4 offset-l2 s12">
+                        <h5 class="white-text">Links</h5>
+                        <ul>
+                            <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+                            <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+                            <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
+                            <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <div class="container">
+                    © 2014 Copyright Text
+                    <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+                </div>
+            </div>
+        </footer>
+        -->
+
+        <script src="/js/jquery-2.1.4.min.js"></script>
+        <script src="/js/materialize.min.js"></script>
+        <script src="/js/socket.io.js"></script>
+        <script src="/js/chat-client.js"></script>
+    </body>
 </html>

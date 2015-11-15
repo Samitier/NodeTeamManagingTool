@@ -5,6 +5,9 @@ var io = require('socket.io')(server);
 
 io.on('connection', function(client){
   console.log("client connected");
+  client.on("message", function(msg) {
+    console.log(msg);
+  });
 });
 
 module.exports = server;
