@@ -5,8 +5,9 @@ var io = require('socket.io')(server);
 
 io.on('connection', function(client){
   console.log("client connected");
-  client.on("message", function(msg) {
-    console.log(msg);
+  client.on("new message", function(msg) {
+    client.broadcast.emit("message", msg);
+    client.emit("your message", msg);
   });
 });
 

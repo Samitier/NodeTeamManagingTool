@@ -11,20 +11,26 @@ main {
 .message-list{
   overflow-y:scroll;
   height:60vh;
+  padding-right:5px;
+}
+
+.card-panel{
+  border-radius: 5px;
+  display:inline-block;
+  margin: 0.4rem 0 0.4rem 0;
+  padding: 12px 16px 12px 16px;
 }
 
 .message-list li{
-  display:inline-block;
+  width:100%;
 }
 
 .message-list li.left{
-   margin-right:50px;
-   margin-left:5px;
+   padding-right:50px;
  }
 
 .message-list li.right{
-  margin-left:50px;
-  margin-right:5px;
+  padding-left:50px;
   text-align:right;
 }
 
