@@ -20,7 +20,7 @@ var server = http.createServer(app);
  * Listen on provided port, on all network interfaces.
  */
 
-server.listen(env.API_SERVER_PORT, "0.0.0.0");
+server.listen(process.env.PORT || 8080);
 server.on('error', onError);
 server.on('listening', onListening);
 
