@@ -1,5 +1,5 @@
 $(function() {
-    var socket = io.connect('http://localhost:3000');
+    var socket = io.connect('node-team-managing-tool.herokuapp.com:3123');
 
     var sendMessage = function () {
         var message = $('#inputMessage').val();

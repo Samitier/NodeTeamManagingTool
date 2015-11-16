@@ -9,7 +9,7 @@ var debug = require('debug')('chatNodeJS:');
 var http = require('http');
 
 var chat = require('../chat');
-
+var env = require('../.env');
 /**
  * Create HTTP server.
  */
@@ -20,11 +20,11 @@ var server = http.createServer(app);
  * Listen on provided port, on all network interfaces.
  */
 
-server.listen(80, "0.0.0.0");
+server.listen(env.API_SERVER_PORT, "0.0.0.0");
 server.on('error', onError);
 server.on('listening', onListening);
 
-chat.listen(3000, "0.0.0.0");
+chat.listen(env.SOCKET_SERVER_PORT, "0.0.0.0");
 chat.on('error', onError);
 chat.on('listening', onListening);
 
@@ -38,18 +38,14 @@ function onError(error) {
     throw error;
   }
 
-  var bind = typeof port === 'string'
-    ? 'Pipe ' + port
-    : 'Port ' + port;
-
   // handle specific listen errors with friendly messages
   switch (error.code) {
     case 'EACCES':
-      console.error(bind + ' requires elevated privileges');
+      console.error('Port requires elevated privileges');
       process.exit(1);
       break;
     case 'EADDRINUSE':
-      console.error(bind + ' is already in use');
+      console.error('Port is already in use');
       process.exit(1);
       break;
     default:
