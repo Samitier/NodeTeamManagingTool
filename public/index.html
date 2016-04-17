@@ -1,113 +1,41 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Team Managing App</title>
-        <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link rel='stylesheet' href='/css/materialize.min.css' />
-        <link rel='stylesheet' href='/css/style.css' />
+        <title>Quotes</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+        <link rel='stylesheet' href='/css/style.css' />
     </head>
     <body>
-        <!--
-        <header>
-            <nav>
-                <div class="nav-wrapper">
-                    <a href="#" class="brand-logo">Team Managing App</a>
-                    <ul class="right hide-on-med-and-down">
-                        <li><a href="#"><i class="material-icons">more_vert</i></a></li>
-                    </ul>
-                </div>
-            </nav>
-        </header> -->
-
-        <main>
-            <div style="height:20px;"></div>
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col s12 l3">
-                        <ul class="collapsible popout" data-collapsible="accordion">
-                            <li>
-                                <div class="collapsible-header active"><i class="material-icons">filter_drama</i>All</div>
-                                <div class="collapsible-body">
-                                    <div class="collection" id="main-room">
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="collapsible-header"><i class="material-icons">place</i>Team #1</div>
-                                <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
-                            </li>
-                            <li>
-                                <div class="collapsible-header"><i class="material-icons">whatshot</i>Team #2</div>
-                                <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col s12 l6  z-depth-1">
-                        <div class="col s12">
-                            <div class="center-align">
-                                <h3>Team #1</h3>
-                            </div>
-                        </div>
-                        <div class="col s12">
-                            <ul id="message-list" class="message-list">
-                            </ul>
-                        </div>
-                        <div class="input-field col s11">
-                            <input type="text" id="inputMessage" class="left" placeholder="Write a message">
-                        </div>
-                        <div class="input-field col s1">
-                            <button id="submitMessage" class="btn-floating waves-effect waves-light right" type="submit" name="action">
-                                    <i class="material-icons">send</i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="col s12 l3">
-                        <ul class="collapsible" data-collapsible="accordion">
-                            <li>
-                                <div class="collapsible-header"><i class="material-icons">filter_drama</i>Profile</div>
-                                <div class="collapsible-body"><p>Profile</p></div>
-                            </li>
-                            <li>
-                                <div class="collapsible-header active"><i class="material-icons">place</i>To do list</div>
-                                <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+        <div class="quote-container">
+            <div class="quote-text">
+                <h1 id="the-quote">
+                </h1>
+                <h2 id="the-author"></h2>
             </div>
-        </main>
-        <!--
-        <footer class="page-footer">
-            <div class="container">
-                <div class="row">
-                    <div class="col l6 s12">
-                        <h5 class="white-text">Footer Content</h5>
-                        <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
-                    </div>
-                    <div class="col l4 offset-l2 s12">
-                        <h5 class="white-text">Links</h5>
-                        <ul>
-                            <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-                            <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-                            <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
-                            <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-copyright">
-                <div class="container">
-                    © 2014 Copyright Text
-                    <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
-                </div>
-            </div>
-        </footer>
-        -->
-
+        </div>
         <script src="/js/jquery-2.1.4.min.js"></script>
-        <script src="/js/materialize.min.js"></script>
         <script src="/js/socket.io.js"></script>
-        <script src="/js/chat-client.js"></script>
+        <script>
+            $(function() {
+                var socket = io.connect(window.location.origin);
+
+                socket.on("message", function(msg){
+                    $("#the-quote").fadeOut(1000);
+                    $("#the-author").fadeOut(1000);
+                    window.setTimeout(function() {
+                        $("#the-quote").html("\"" + msg.quote + "\"").fadeIn();
+                        $("#the-author").html("- " + msg.author).fadeIn();
+                    }, 1000);
+                });
+
+                socket.on("you connected", function(){
+                    $("#the-quote").hide();
+                    $("#the-author").hide();
+                    $("#the-quote").html("\"And those who were seen dancing were thought to be insane by those who could not hear the music.\"").fadeIn();
+                    $("#the-author").html("- Friedrich Nietzsche").fadeIn();
+                });
+            });
+        </script>
     </body>
 </html>

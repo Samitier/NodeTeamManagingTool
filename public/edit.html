@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Quotes</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+        <link rel='stylesheet' href='/css/style.css' />
+    </head>
+    <body>
+        <div class="edit-container">
+            <div class="edit-text">
+                <h1>Edit the quote:</h1><br>
+                <textarea id="the-quote" placeholder="The Quote"></textarea>
+                <input type="text" id="the-author" placeholder="The Author"><br>
+                <button id="submit-quote">Send</button>
+            </div>
+        </div>
+        <script src="/js/jquery-2.1.4.min.js"></script>
+        <script src="/js/socket.io.js"></script>
+        <script>
+            $(function() {
+                var socket = io.connect(window.location.origin);
+
+                $("#submit-quote").mouseup( function () {
+                    var message =  {quote:$('#the-quote').val(), author: $('#the-author').val()};
+                    message.quote = cleanInput(message.quote);
+                    message.author = cleanInput(message.author);
+                    if (!message.author) alert("Please add an author.");
+                    else if (!message.quote) alert("Please add a quote.");
+                    else {
+                        $('#the-quote').val("");
+                        $('#the-author').val("")
+                        socket.emit('new message', message);
+                        alert("The quote has been updated!");
+                    }
+                });
+
+                function cleanInput (input) {
+                    return $('<div/>').text(input).text();
+                }
+            });
+        </script>
+    </body>
+</html>
