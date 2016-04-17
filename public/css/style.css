@@ -13,7 +13,7 @@ body {
     left:0; right:0;
     top:0; bottom:0;
     margin:auto;
-
+    text-align:center;
     overflow:hidden;
     border: 0.3em solid #E0ECC5;
 }
@@ -23,6 +23,7 @@ body {
     position: relative;
     top: 50%;
     transform: translateY(-50%);
+    display:inline-block;
 }
 
 .quote-text > h1 {
@@ -38,7 +39,7 @@ body {
     text-align:right;
     font-weight: normal;
     font-family: 'Lobster', cursive;
-    margin-right: 4em;
+    margin-right: 2.5em;
 }
 
 .edit-container {
